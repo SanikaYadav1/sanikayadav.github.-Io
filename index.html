@@ -33,6 +33,485 @@
       min-height: 100vh;
     }
 
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(14,14,20,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; color: var(--text2); text-decoration: none;
+      letter-spacing: 0.5px; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── MAIN ── */
+    main { max-width: 860px; margin: 0 auto; padding: 90px 2rem 4rem; }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      padding: 3.5rem;
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(124,143,245,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-left {}
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); background: rgba(124,143,245,0.12);
+      border: 0.5px solid rgba(124,143,245,0.3);
+      padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 1.25rem;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700; line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+    .hero-bio {
+      font-size: 15px; color: var(--text2); line-height: 1.75;
+      max-width: 480px; margin-bottom: 1.75rem;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hero-tag {
+      font-size: 12px; padding: 5px 14px; border-radius: 20px;
+      background: var(--bg3); border: 0.5px solid var(--border);
+      color: var(--text2);
+    }
+    .hero-avatar {
+      width: 110px; height: 110px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--bg3), var(--bg));
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 36px; color: var(--accent);
+      flex-shrink: 0;
+    }
+    /* If user adds a real photo */
+    .hero-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
+    /* ── SECTIONS ── */
+    section { margin-bottom: 2.5rem; animation: fadeUp 0.6s ease both; }
+    section:nth-child(2) { animation-delay: 0.1s; }
+    section:nth-child(3) { animation-delay: 0.2s; }
+    section:nth-child(4) { animation-delay: 0.3s; }
+    section:nth-child(5) { animation-delay: 0.4s; }
+    section:nth-child(6) { animation-delay: 0.5s; }
+
+    .section-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 1.5rem;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 600;
+      white-space: nowrap;
+    }
+    .section-line { flex: 1; height: 0.5px; background: var(--border); }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+    .skill-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 14px;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-emoji { font-size: 26px; margin-bottom: 8px; }
+    .skill-name { font-size: 13px; font-weight: 500; color: var(--text); }
+    .skill-level { font-size: 11px; color: var(--text3); margin-top: 3px; }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; gap: 14px; }
+    .project-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex; gap: 1.25rem;
+      transition: border-color 0.25s;
+    }
+    .project-card:hover { border-color: rgba(124,143,245,0.4); }
+    .project-num {
+      min-width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(124,143,245,0.12);
+      color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 600;
+      flex-shrink: 0;
+    }
+    .project-body {}
+    .project-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+    .project-title { font-size: 16px; font-weight: 500; }
+    .project-year {
+      font-size: 11px; color: var(--accent2);
+      background: rgba(224,107,139,0.12);
+      border: 0.5px solid rgba(224,107,139,0.25);
+      padding: 2px 10px; border-radius: 20px;
+    }
+    .project-desc { font-size: 13px; color: var(--text2); line-height: 1.65; }
+
+    /* ── EDUCATION ── */
+    .edu-timeline { display: flex; flex-direction: column; gap: 12px; }
+    .edu-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: 14px;
+      padding: 1.1rem 1.4rem;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .edu-dot {
+      min-width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent); margin-top: 5px; flex-shrink: 0;
+    }
+    .edu-dot.done { background: var(--text3); }
+    .edu-deg { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+    .edu-inst { font-size: 13px; color: var(--text2); }
+    .edu-status {
+      margin-left: auto; font-size: 11px; padding: 2px 10px;
+      border-radius: 20px;
+    }
+    .edu-status.active {
+      color: var(--green); background: rgba(94,207,163,0.1);
+      border: 0.5px solid rgba(94,207,163,0.25);
+    }
+    .edu-status.done {
+      color: var(--text3); background: var(--bg3);
+      border: 0.5px solid var(--border);
+    }
+
+    /* ── MAP ── */
+    .map-wrapper {
+      border-radius: 16px; overflow: hidden;
+      border: 0.5px solid var(--border);
+      position: relative;
+    }
+    .map-wrapper iframe { display: block; width: 100%; height: 320px; border: none; }
+    .map-pin-badge {
+      position: absolute; bottom: 14px; left: 14px;
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 14px;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500;
+      pointer-events: none;
+    }
+    .pin-dot { width: 8px; height: 8px; border-radius: 50%; background: #e24b4a; }
+
+    /* ── CONTACT ── */
+    .contact-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .contact-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 1.5rem;
+      border-bottom: 0.5px solid var(--border);
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-row:hover { background: var(--bg3); }
+    .contact-icon { font-size: 18px; color: var(--accent); min-width: 22px; }
+    .contact-label { color: var(--text2); min-width: 100px; font-size: 13px; }
+    .contact-val { color: var(--text); }
+    .contact-val.placeholder { color: var(--text3); font-style: italic; }
+    .contact-val a { color: var(--accent); text-decoration: none; }
+    .contact-val a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 12px;
+      color: var(--text3);
+      border-top: 0.5px solid var(--border);
+    }
+
+    /* ── ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; padding: 2rem; }
+      .hero-avatar { width: 80px; height: 80px; font-size: 26px; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 16px; }
+      main { padding: 80px 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">Sanika Y.</a>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-badge">MCA Student &nbsp;·&nbsp;</div>
+        <h1 class="hero-name">Sanika Vijay Yadav</h1>
+        <p class="hero-bio">
+          A passionate MCA student at RIT Islampur. Driven by curiosity and a love for building practical, impactful tech solutions.
+        </p>
+        <div class="hero-tags">
+          <span class="hero-tag">Python</span>
+          <span class="hero-tag">Java</span>
+          <span class="hero-tag">HTML &amp; CSS</span>
+          <span class="hero-tag">.NET</span>
+          <span class="hero-tag">PHP</span>
+        </div>
+      </div>
+      <!-- Replace the initials below with: <img src="your-photo.jpg" alt="Sanika"> once you have your photo -->
+      <div class="hero-avatar">SY</div>
+    </div>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-header">
+        <h2>Skills</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-emoji">🐍</div>
+          <div class="skill-name">Python</div>
+          <div class="skill-level">Programming</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-emoji">☕</div>
+          <div class="skill-name">Java</div>
+          <div class="skill-level">Programming</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-emoji">🌐</div>
+          <div class="skill-name">HTML &amp; CSS</div>
+          <div class="skill-level">Web Design</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-emoji">🪟</div>
+          <div class="skill-name">.NET</div>
+          <div class="skill-level">Framework</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-emoji">🐘</div>
+          <div class="skill-name">PHP</div>
+          <div class="skill-level">Backend</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <h2>Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-num">01</div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-title">Online Yoga Class Platform</span>
+              <span class="project-year">BCA — 2nd Year</span>
+            </div>
+            <p class="project-desc">A web-based platform designed to connect yoga instructors with students online. Features include class scheduling, student registration, and session management through an intuitive interface.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-num">02</div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-title">Food Waste Management System</span>
+              <span class="project-year">BCA — 3rd Year</span>
+            </div>
+            <p class="project-desc">A system aimed at reducing food wastage by connecting donors such as restaurants and households with NGOs and food banks. Includes tracking, reporting, and notification features.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-num">03</div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-title">File Encryption Tool</span>
+              <span class="project-year">MCA — 1st Year</span>
+            </div>
+            <p class="project-desc">A desktop utility that securely encrypts and decrypts files using cryptographic algorithms. Demonstrates understanding of data security, file I/O operations, and encryption principles in Python.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-header">
+        <h2>Education</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="edu-timeline">
+        <div class="edu-card">
+          <div class="edu-dot"></div>
+          <div style="flex:1;">
+            <div class="edu-deg">Master of Computer Applications (MCA)</div>
+            <div class="edu-inst">RIT Islampur, Maharashtra</div>
+          </div>
+          <span class="edu-status active">Pursuing</span>
+        </div>
+        <div class="edu-card">
+          <div class="edu-dot done"></div>
+          <div style="flex:1;">
+            <div class="edu-deg">Bachelor of Computer Applications (BCA)</div>
+            <div class="edu-inst">Maharashtra, India</div>
+          </div>
+          <span class="edu-status done">Completed</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION MAP -->
+    <section id="location">
+      <div class="section-header">
+        <h2>Location</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=74.4327%2C17.0839%2C74.4727%2C17.1439&layer=mapnik&marker=17.1139%2C74.4527"
+          allowfullscreen
+          loading="lazy"
+          title="Palus Dattanagar, Sangli, Maharashtra">
+        </iframe>
+        <div class="map-pin-badge">
+          <div class="pin-dot"></div>
+          Palus Dattanagar, Sangli, Maharashtra
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <h2>Contact</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-row">
+          <span class="contact-icon">📍</span>
+          <span class="contact-label">Location</span>
+          <span class="contact-val">Palus Dattanagar, Sangli, Maharashtra</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">🎓</span>
+          <span class="contact-label">Institution</span>
+          <span class="contact-val">RIT Islampur</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">📧</span>
+          <span class="contact-label">Email</span>
+          <a href="mailto:sanikayadav111@gmail.com" class="contact-val">sanikayadav111@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">💼</span>
+          <span class="contact-label">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/sanika-yadav-1837b1332" target="_blank" class="contact-val">linkedin.com/in/sanika-yadav</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">🐙</span>
+          <span class="contact-label">GitHub</span>
+          <a href="https://sanikayadav1.github.io" target="_blank" class="contact-val">sanikayadav1.github.io</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Sanika Vijay Yadav &nbsp;·&nbsp; Palus Dattanagar, Maharashtra, India</p>
+  </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sanika Vijay Yadav — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e14;
+      --bg2: #15151f;
+      --bg3: #1c1c2a;
+      --border: rgba(255,255,255,0.08);
+      --text: #f0f0f5;
+      --text2: #a0a0b8;
+      --text3: #6a6a88;
+      --accent: #7c8ff5;
+      --accent2: #e06b8b;
+      --green: #5ecfa3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
