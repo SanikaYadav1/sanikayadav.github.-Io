@@ -1,2 +1,2 @@
-# sanikayadav.github.-Io
+# sanikayadav.github.-io
 My personal portfolio website
